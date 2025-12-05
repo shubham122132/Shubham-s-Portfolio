@@ -10,6 +10,24 @@
             color: white;
             font-family: 'poppins', sans-serif;
         }
+        .blob {
+            position: fixed;
+            top: -200px;
+            left: 200px;
+            width: 500px;
+            height: 500px;
+            background: hsl(270, 100%, 42%);  /* the purple glow */
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: blobMove 25s infinite alternate ease-in-out;
+            z-index: -2; /* IMPORTANT: keep it behind stars & content */
+            }
+
+            @keyframes blobMove {
+            0%   { transform: translate(0, 0); }
+            50%  { transform: translate(300px, 200px); }
+            100% { transform: translate(-200px, 150px); }
+        }
         nav{
             display: flex;
             justify-content: space-around;
@@ -789,10 +807,19 @@
     background: rgba(8, 8, 50, 0.95);
 }
 
-.contact-btn {
+/* .contact-btn {
     margin-top: 10px;
     font-size: 0.85rem;
+} */
+#send-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* space between icon and text */
+    width: 100%; /* optional: full width button */
+    text-align: center;
 }
+
 
 /* right side contact info */
 

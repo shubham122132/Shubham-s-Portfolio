@@ -9,28 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-        <style>
-        .blob {
-            position: fixed;
-            top: -200px;
-            left: 200px;
-            width: 500px;
-            height: 500px;
-            background: hsl(270, 100%, 42%);  /* the purple glow */
-            border-radius: 50%;
-            filter: blur(120px);
-            animation: blobMove 25s infinite alternate ease-in-out;
-            z-index: -2; /* IMPORTANT: keep it behind stars & content */
-            }
 
-            @keyframes blobMove {
-            0%   { transform: translate(0, 0); }
-            50%  { transform: translate(300px, 200px); }
-            100% { transform: translate(-200px, 150px); }
-    }
-
-
-    </style>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "HNGuUm5nxRNpQWnyz",
+            });
+        })();
+    </script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="blob"></div>
@@ -281,7 +271,7 @@
                         my inbox is always open. I’ll try my best to get back to you as soon as I can.
                     </p>
 
-                    <form class="contact-form" action="https://your-backend-url/contact" method="post">
+                    <form class="contact-form" method="post" onsubmit="sendMail(event)">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -297,7 +287,7 @@
                             <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn-solid contact-btn">
+                        <button type="submit" id="send-btn" class="btn-solid contact-btn">
                             <i class="fa-regular fa-paper-plane"></i> Send Message
                         </button>
                     </form>
@@ -327,7 +317,7 @@
 
     <!-- Optional simple footer -->
     <footer class="footer">
-        <p>© 2025 Shubham Kumar · Built with passion & multiple cup of Tea☕</p>
+        <p>© 2025 Shubham Kumar · Built with passion & multiple cups of Tea☕</p>
     </footer>
 
 
