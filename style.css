@@ -28,14 +28,16 @@
             50%  { transform: translate(300px, 200px); }
             100% { transform: translate(-200px, 150px); }
         }
-        nav{
+        nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             height: 60px;
-            background: rgba(0, 0, 33, 0.55);  /* your dark bg with transparency */
+            padding: 0 40px;
+            background: rgba(0, 0, 33, 0.55);
             backdrop-filter: blur(6px);
         }
+
         /* LOGO */
         .logo {
             display: flex;
@@ -45,48 +47,138 @@
             color: #ffffff;
         }
 
-        .logo-mark {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #00d9ff, #6b00d6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 0 14px rgba(0, 217, 255, 0.7);
-        }
-
-        .logo-text {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            font-size: 1rem;
-            color: #e8ecff;
-        }
         .logo-img {
             height: 32px;
             width: auto;
         }
 
-        nav ul{
+        /* desktop nav links */
+        nav .right ul {
             display: flex;
             justify-content: center;
+            align-items: center;
         }
-        nav ul li{
+
+        nav .right ul li {
             list-style: none;
-            margin: 0 23px;
+            margin: 0 18px;
         }
-        nav ul li a{
+
+        nav .right ul li a {
             text-decoration: none;
             color: white;
             font-weight: 500;
             font-size: 14px;
         }
-        nav ul li a:hover {
+
+        nav .right ul li a:hover {
             color: #00d9ff;
             transition: color 0.3s ease;
         }
+
+        /* HAMBURGER BASE (hidden on desktop) */
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* hamburger icon */
+        .nav-toggle-label span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 22px;
+            height: 2px;
+            background: #ffffff;
+            transition: transform 0.2s ease, top 0.2s ease, bottom 0.2s ease;
+        }
+
+        .nav-toggle-label span::before {
+            top: -6px;
+        }
+
+        .nav-toggle-label span::after {
+            bottom: -6px;
+        }
+
+        /* when checked → transform into X */
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+/*        RESPONSIVE NAV         */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 18px;
+            }
+
+            /* show hamburger on mobile */
+            .nav-toggle-label {
+                display: block;
+            }
+
+            /* hide menu by default on mobile */
+            nav .right {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                max-width: 260px;
+                background: rgba(3, 3, 30, 0.96);
+                border-left: 1px solid rgba(255, 255, 255, 0.06);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+                transform: translateY(-20px);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s ease, transform 0.2s ease;
+            }
+
+            nav .right ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 16px 12px;
+            }
+
+            nav .right ul li {
+                margin: 6px 0;
+            }
+
+            nav .right ul li a {
+                font-size: 0.9rem;
+            }
+
+            /* when checkbox checked → show menu */
+            .nav-toggle:checked ~ .right {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+        }
+        /* First Section */
 
         .firstSection{
             display: flex; 
